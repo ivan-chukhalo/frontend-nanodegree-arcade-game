@@ -5,8 +5,8 @@
  * to load the same image multiple times.
  */
 (function() {
-    var resourceCache = {};
-    var readyCallbacks = [];
+    var resourceCache = {};                                                     // ???
+    var readyCallbacks = [];                                                    // ???
 
     /* This is the publicly accessible image loading function. It accepts
      * an array of strings pointing to image files or a string for a single
@@ -19,14 +19,14 @@
              * loader on that image file
              */
             urlOrArr.forEach(function(url) {
-                _load(url);
+                _load(url);                                                     // якщо отримали масив, на кожному його елементі викликаємо _load()
             });
         } else {
             /* The developer did not pass an array to this function,
              * assume the value is a string and call our image loader
              * directly.
              */
-            _load(urlOrArr);
+            _load(urlOrArr);                                                    // якщо не масив, а рядок адреси, викликаємо прямо на ньому _load()
         }
     }
 
@@ -34,7 +34,7 @@
      * called by the public image loader function.
      */
     function _load(url) {
-        if(resourceCache[url]) {
+        if(resourceCache[url]) {                                                // ??? ніби звертаємося не до індекса, а до значення елемента масива
             /* If this URL has been previously loaded it will exist within
              * our resourceCache array. Just return that image rather than
              * re-loading the image.
@@ -44,7 +44,7 @@
             /* This URL has not been previously loaded and is not present
              * within our cache; we'll need to load this image.
              */
-            var img = new Image();
+            var img = new Image();                                              
             img.onload = function() {
                 /* Once our image has properly loaded, add it to our cache
                  * so that we can simply return this image if the developer
