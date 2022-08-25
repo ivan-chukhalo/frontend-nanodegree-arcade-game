@@ -34,7 +34,7 @@
      * called by the public image loader function.
      */
     function _load(url) {
-        if(resourceCache[url]) {                                                // ??? ніби звертаємося не до індекса, а до значення елемента масива
+        if(resourceCache[url]) {                                                // звертаємося до поля об'єкта
             /* If this URL has been previously loaded it will exist within
              * our resourceCache array. Just return that image rather than
              * re-loading the image.

@@ -8,13 +8,25 @@ var Enemy = function(x, y) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
+    this.speedKoef = Math.floor(Math.random() * 5) * 75 + 60;
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // this.x *= dt;
-    // this.y *= dt;
+    this.x += dt * this.speedKoef;
+    // rowOneY = 63;
+    // rowTwo = 63 + 83 = 146;
+    // rowThree = 63 + 83 + 83 = 229; 
+    // ------------------------------------------
+    // xStart = -98;
+    // xEnd = 0 + 101 * 4 + 98 = 502;
+
+
+
+
+
+
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -31,15 +43,15 @@ Enemy.prototype.render = function() {
 
 var Player = function (){
     this.sprite = 'images/char-boy.png';
-    this._xInitial = 202;
-    this._yInitial = 395;
+    this.xInitial = 202;
+    this.yInitial = 395;
     this.xStep = 101;
     this.yStep = 83;
-    this.x = this._xInitial;
-    this.y = this._yInitial;
+    this.x = this.xInitial;
+    this.y = this.yInitial;
     this.xAxisMin = 0;
     this.xAxisMax = this.xAxisMin + this.xStep * 4;           // xAxisMax = 404;
-    this.yAxisMin = this._yInitial - this.yStep * 4;          // yAxisMin = 63
+    this.yAxisMin = this.yInitial - this.yStep * 4;          // yAxisMin = 63
     this.yAxisMax = this.yAxisMin + this.yStep * 4;           // yAxisMax = 395
 }
 
@@ -72,8 +84,9 @@ Player.prototype.handleInput = function (direction){
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-let bug = new Enemy(100, 100);
-const allEnemies = [bug];
+let bug1 = new Enemy(0, 146);
+let bug2 = new Enemy(40, 146)
+const allEnemies = [bug1, bug2];
 let player = new Player();
 
 
