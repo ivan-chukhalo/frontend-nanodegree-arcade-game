@@ -1,5 +1,5 @@
 const AVAILABLEROWSFORENEMIES = [63, 146, 229]; 
-const ALLENEMIES = [];
+const allEnemies = [];
 
 function resetPlayer(){
     player.x = player.xInitial;
@@ -7,7 +7,7 @@ function resetPlayer(){
 }
 
 function resetEnemies(){
-    ALLENEMIES.forEach((el)=>{        
+    allEnemies.forEach((el)=>{        
         el.x = el.xInitial;
         el.speedKoef = Math.floor(Math.random() * 10) * 25 + 75;  
     })
@@ -92,7 +92,7 @@ Player.prototype.handleInput = function (direction){
 
 
 for (let elem of AVAILABLEROWSFORENEMIES.concat(AVAILABLEROWSFORENEMIES)){
-    ALLENEMIES.push(new Enemy(elem));
+    allEnemies.push(new Enemy(elem));
 }
 let player = new Player();
 
